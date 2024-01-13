@@ -5,9 +5,8 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
-
 public class TextFileReader {
-    public void readFile(String filePath) {
+    public Map<String, Integer> readFile(String filePath) {
         Map<String, Integer> wordCountMap = new HashMap<>();
 
         try (FileReader fileReader = new FileReader(filePath);
@@ -29,8 +28,6 @@ public class TextFileReader {
             e.printStackTrace();
         }
 
-        for (Map.Entry<String, Integer> entry : wordCountMap.entrySet()) {
-            System.out.println(entry.getKey() + ": " + entry.getValue());
-        }
+        return wordCountMap;
     }
 }
