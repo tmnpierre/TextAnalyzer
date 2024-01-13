@@ -3,12 +3,18 @@ import Classes.TextFileReader;
 import Interfaces.ITextAnalyzer;
 
 import java.util.Map;
+import java.util.Scanner;
 import java.util.stream.Collectors;
 
 public class Main {
     public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Entrez le chemin du fichier texte à analyser :");
+        String filePath = scanner.nextLine();
+
         TextFileReader reader = new TextFileReader();
-        Map<String, Integer> wordCountMap = reader.readFile("chemin/vers/le/fichier.txt");
+        Map<String, Integer> wordCountMap = reader.readFile(filePath);
 
         ITextAnalyzer analyzer = new SimpleTextAnalyzer(wordCountMap);
 
