@@ -20,10 +20,19 @@ public class Main {
 
         System.out.println("Nombre total de mots : " + analyzer.getTotalWordCount());
 
-        Map<String, Integer> frequentWords = wordCountMap.entrySet().stream()
+        System.out.println("Voulez-vous filtrer les mots par longueur minimale? (oui/non)");
+        String filterResponse = scanner.nextLine();
+
+        if ("oui".equalsIgnoreCase(filterResponse)) {
+            System.out.println("Entrez la longueur minimale des mots :");
+            int minLength = scanner.nextInt();
+            analyzer.filterWords(minLength);
+        }
+
+        Map<String, Integer> frequentWords = analyzer.getWordFrequency().entrySet().stream()
                 .filter(entry -> entry.getValue() > 1)
                 .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
 
-        System.out.println("Mots fréquents : " + frequentWords);
+        System.out.println("Mots fréquents après filtrage : " + frequentWords);
     }
 }
