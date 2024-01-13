@@ -1,5 +1,8 @@
+import Classes.TextFileReader;
+
 public class Main {
     public static void main(String[] args) {
-        System.out.println("Hello world!");
+        TextFileReader reader = new TextFileReader();
+        reader.readFile("chemin/vers/votre/fichier.txt");
     }
 }
